@@ -6,9 +6,6 @@ export default class SearchEngine {
     const result = fetch(
       'https://api.themoviedb.org/3/authentication/guest_session/new?api_key=297a876b5d898a21bdf4174dff371b61'
     )
-    if (!result.ok) {
-      render(<Alert message="Error" description="Error with server." type="error" showIcon />)
-    }
     const { guest_session_id } = await result.json()
     localStorage.setItem('guestToken', guest_session_id)
   }
@@ -26,9 +23,6 @@ export default class SearchEngine {
         body: JSON.stringify({ value: stars }),
       }
     )
-    if (!result.ok) {
-      render(<Alert message="Error" description="Error with server." type="error" showIcon />)
-    }
   }
 
   async getRatedMovies(page) {
@@ -37,9 +31,6 @@ export default class SearchEngine {
         'guestToken'
       )}/rated/movies?api_key=297a876b5d898a21bdf4174dff371b61&language=en-US&sort_by=created_at.asc&page=${page}`
     )
-    if (!result.ok) {
-      render(<Alert message="Error" description="Error with server." type="error" showIcon />)
-    }
     const { results, total_pages } = await result.json()
     return { results: results, totalPagesRanked: total_pages }
   }
@@ -48,9 +39,6 @@ export default class SearchEngine {
     const result = await fetch(
       `https://api.themoviedb.org/3/trending/movie/week?api_key=297a876b5d898a21bdf4174dff371b61&page=${page}`
     )
-    if (!result.ok) {
-      render(<Alert message="Error" description="Error with server." type="error" showIcon />)
-    }
     const body = await result.json()
     return { elements: body.results, maxPage: body.total_pages }
   }
@@ -58,9 +46,6 @@ export default class SearchEngine {
     const result = await fetch(
       'https://api.themoviedb.org/3/genre/movie/list?api_key=297a876b5d898a21bdf4174dff371b61&language=en-US'
     )
-    if (!result.ok) {
-      render(<Alert message="Error" description="Error with server." type="error" showIcon />)
-    }
     const body = await result.json()
     return body.genres
   }
@@ -69,16 +54,6 @@ export default class SearchEngine {
     const result = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=297a876b5d898a21bdf4174dff371b61&language=en-US&page=1&include_adult=false&query=${value}&page=${page}`
     )
-    if (!result.ok) {
-      render(
-        <Alert
-          message="Error"
-          description={`Nothing was found according to your request ${this}.`}
-          type="error"
-          showIcon
-        />
-      )
-    }
     const body = await result.json()
     return { elements: body.results, maxPage: body.total_pages }
   }
