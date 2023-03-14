@@ -1,17 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { Online, Offline } from 'react-detect-offline'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import './index.css'
+import App from './components/app/app'
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  <React.Fragment>
+    <Online>
+      <App className="app" />
+    </Online>
+    <Offline>
+      <div
+        className="abstract-about-connection"
+        style={{
+          fontFamily: 'Arial, Helvetica, sans-serif',
+          fontSize: 'large',
+          textAlign: 'center',
+          marginTop: '45%',
+        }}
+      >
+        Sorry, something bad happened.
+        <br />
+        Please check your internet connection
+      </div>
+    </Offline>
+  </React.Fragment>
+)

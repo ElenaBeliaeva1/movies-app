@@ -1,0 +1,124 @@
+.ant-card-body{
+    display: flex;
+    padding: 0;
+}
+
+.movie-poster{
+    max-width:183px;
+    height:auto;
+}
+
+p{  
+    font-size: 12px;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    font-family:'Inter', sans-serif;
+}
+
+.date-of-creation{
+    font-size: 12px;
+    line-height: 22px;
+    color: rgba(130, 126, 126, 1);
+    margin: 0;
+}
+
+.title-container{
+    display: flex;
+}
+
+.title{
+    width: 130px;
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.movie-card{
+    margin:0;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+}
+
+.description{
+    margin: 0;
+}
+
+.rating {
+    margin-left: auto;
+    border-radius: 50%;
+    border: 2px solid black;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.red-border{
+    border-color:#E90000 ;
+}
+
+.orange-border{
+    border-color: #E97E00;
+}
+
+.yellow-border{
+    border-color: #E9D100;
+}
+
+.green-border{
+    border-color: #66E900;
+}
+
+.movie-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.movie-description {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.movie-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rating-icon {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.rating-value {
+  margin: 0;
+  font-size: 16px;
+}
+
+.movie-rating-stars {
+  font-size: 24px;
+  color: gold;
+}
+
+.hidden{
+    display: none;
+}
+
+.image-container{
+    width: 183px;
+    height: 281px;
+    margin-right: 20px;
+}
+
+.spin{
+    margin-top: 20px;
+    align-self: center;
+}
