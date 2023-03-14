@@ -1,10 +1,11 @@
 export default class SearchEngine {
   async getGuestToken() {
-    const result = fetch(
+    const result = await fetch(
       'https://api.themoviedb.org/3/authentication/guest_session/new?api_key=297a876b5d898a21bdf4174dff371b61'
     )
-    const { guest_session_id } = await result.json()
-    localStorage.setItem('guestToken', guest_session_id)
+    const body = await result.json()
+    const { guest_session_id } = body
+    await localStorage.setItem('guestToken', guest_session_id)
   }
 
   async rateMovie(stars, movieId) {
