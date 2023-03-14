@@ -1,6 +1,3 @@
-import { render } from '@testing-library/react'
-import { Alert } from 'antd'
-
 export default class SearchEngine {
   async getGuestToken() {
     const result = fetch(
@@ -11,7 +8,7 @@ export default class SearchEngine {
   }
 
   async rateMovie(stars, movieId) {
-    const result = await fetch(
+    await fetch(
       `https://api.themoviedb.org/3/movie/${movieId}/rating?api_key=297a876b5d898a21bdf4174dff371b61&guest_session_id=${localStorage.getItem(
         'guestToken'
       )}`,
