@@ -6,12 +6,15 @@ export default class SearchEngine {
     const result = fetch(
       'https://api.themoviedb.org/3/authentication/guest_session/new?api_key=297a876b5d898a21bdf4174dff371b61'
     )
+    if (!result.ok) {
+      render(<Alert message="Error" description="Error with server." type="error" showIcon />)
+    }
     const { guest_session_id } = await result.json()
     localStorage.setItem('guestToken', guest_session_id)
   }
 
   async rateMovie(stars, movieId) {
-    await fetch(
+    const result = await fetch(
       `https://api.themoviedb.org/3/movie/${movieId}/rating?api_key=297a876b5d898a21bdf4174dff371b61&guest_session_id=${localStorage.getItem(
         'guestToken'
       )}`,
@@ -23,6 +26,9 @@ export default class SearchEngine {
         body: JSON.stringify({ value: stars }),
       }
     )
+    if (!result.ok) {
+      render(<Alert message="Error" description="Error with server." type="error" showIcon />)
+    }
   }
 
   async getRatedMovies(page) {
@@ -31,6 +37,9 @@ export default class SearchEngine {
         'guestToken'
       )}/rated/movies?api_key=297a876b5d898a21bdf4174dff371b61&language=en-US&sort_by=created_at.asc&page=${page}`
     )
+    if (!result.ok) {
+      render(<Alert message="Error" description="Error with server." type="error" showIcon />)
+    }
     const { results, total_pages } = await result.json()
     return { results: results, totalPagesRanked: total_pages }
   }
